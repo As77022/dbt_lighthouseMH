@@ -1,0 +1,140 @@
+version: 2
+
+sources:
+  - name: "lighthouseMH"
+    database: LAHIDATA
+    schema: a_stg_lh_mh  
+    tables:
+      - name: academic_years
+        identifier: AcademicYears
+        description: Academic years
+      - name: blocks
+        identifier: Blocks
+        description: employee data new
+      - name: countries
+        identifier: Countries
+        description: employee data new
+      - name: districts
+        identifier: Districts
+        description: employee data new
+      - name: division_districts
+        identifier: DivisionDistricts
+        description: employee data new
+      - name: divisions
+        identifier: Divisions
+        description: employee data new
+      - name: hm_issue_reporting
+        identifier: hmissuereporting
+        description: employee data new
+      - name: hm_schools_map
+        identifier: hmschoolsmap
+        description: employee data new
+      - name: job_roles
+        identifier: JobRoles
+        description: employee data new
+      - name: roles
+        identifier: Roles
+        description: employee data new
+      - name: school_categories
+        identifier: SchoolCategories
+        description: employee data new
+      - name: school_classes
+        identifier: SchoolClasses
+        description: employee data new
+      - name: schools
+        identifier: Schools
+        description: employee data new
+      - name: schools_by_vtp_sector_info
+        identifier: SchoolsByVTPSectorinfo
+        description: employee data new
+      - name: school_ve_incharges
+        identifier: schoolveincharges
+        description: employee data new
+      - name: school_vtp_sectors
+        identifier: SchoolVTPSectors
+        description: employee data new
+      - name: sections
+        identifier: Sections
+        description: employee data new
+      - name: sector_job_roles
+        identifier: SectorJobRoles
+        description: employee data new
+      - name: sectors
+        identifier: Sectors
+        description: employee data new
+      - name: states
+        identifier: States
+        description: employee data new
+      - name: vocational_trainers
+        identifier: VocationalTrainers
+        description: employee data new
+      - name: student_class_details
+        identifier: StudentClassDetails
+        description: employee data new
+      - name: student_classes
+        identifier: StudentClasses
+        description: employee data new
+      - name: student_class_mapping
+        identifier: StudentClassMapping
+        description: employee data new
+      - name: students_for_exit_form
+        identifier: StudentsForExitForm
+        description: employee data new
+      - name: tool_equipments
+        identifier: ToolEquipments
+        description: employee data new
+      - name: vc_school_sectors
+        identifier: vcschoolsectors
+        description: employee data new
+      - name: vocational_training_providers
+        identifier: VocationalTrainingProviders
+        description: employee data new
+      - name: vt_class_students
+        identifier: vtclassstudents
+        description: employee data new
+      - name: vtp_sector_job_roles
+        identifier: vtpsectorjobroles
+        description: employee data new
+      - name: vtp_sectors
+        identifier: vtpsectors
+        description: employee data new
+      - name: vt_school_classes
+        identifier: vtschoolclasses
+        description: employee data new
+      - name: vt_school_sector_job_roles
+        identifier: vtschoolsectorjobroles
+        description: employee data new
+      - name: vt_school_sectors
+        identifier: vtschoolsectors
+        description: employee data new
+      - name: coordinator_trainers
+        identifier: CoordinatorTrainers
+        description: coordinators trainers
+      - name: ds_coordinator_attendances
+        identifier: dscoordinatorattendances
+        description: coordinators trainers
+      - name: ds_field_visits
+        identifier: dsfieldvisits
+        description: coordinators trainers
+      - name: ds_guest_lectures
+        identifier: dsguestlectures
+        description: coordinators trainers
+      - name: ds_trainer_attendances
+        identifier: dstrainerattendances
+        description: coordinators trainers
+      - name: ds_trainers
+        identifier: dstrainers
+        description: coordinators trainers
+      - name: toolequipments
+        identifier: ToolEquipments
+        description: employee data new
+      - name: vtr_training_of_teachers
+        identifier: vtrtrainingofteachers
+        description: coordinators trainers
+      - name: exit_survey_details
+        identifier: ExitSurveyDetails
+        description: coordinators trainers
+      - name: vt_field_industry_visit_conducted
+        identifier: vtfieldindustryvisitconducted
+        description: coordinators trainers
+

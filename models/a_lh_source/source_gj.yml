@@ -1,0 +1,67 @@
+version: 2
+
+sources:
+  - name: source_lahi_gj
+    database: LAHIDATA
+    schema: a_stg_lh_gj
+    tables:
+      - name: gj_academic_years
+        identifier: AcademicYears
+        description: gujrat lighthjouse data 
+      - name: gj_blocks
+        identifier: Blocks
+        description: gujrat lighthjouse data
+      - name: school_classes
+        identifier: SchoolClasses
+        description:  gujrat lighthjouse data
+      - name: districts
+        identifier: districts
+        description:  gujrat lighthjouse data
+      - name: gj_accountwork_locations
+        identifier: AccountWorkLocations
+        description:  gujrat lighthjouse data
+      - name: gj_accounts
+        identifier: Accounts
+        description:  gujrat lighthjouse data
+      - name: gj_datavalues
+        identifier: DataValues
+        description:  gujrat lighthjouse data
+      - name: gj_exitsurvey_details
+        identifier: ExitSurveyDetails
+        description:  gujrat lighthjouse data
+      - name: gj_jobroles
+        identifier: JObRoles
+        description:  gujrat lighthjouse data      
+      - name: gj_schools
+        identifier: Schools
+        description:  gujrat lighthjouse data
+      - name: gj_sectors
+        identifier: Sectors
+        description:  gujrat lighthjouse data
+      - name: gj_states
+        identifier: States
+        description:  gujrat lighthjouse data
+      - name: gj_Student_class_details
+        identifier: StudentClassDetails
+        description:  gujrat lighthjouse data
+      - name: gj_Student_class_mapping
+        identifier: StudentClassMapping
+        description:  gujrat lighthjouse data
+      - name: student_classes
+        identifier: StudentClasses
+        description:  gujrat lighthjouse data
+      - name: gj_vc_trainers_map
+        identifier: VCTrainersMap
+        description:  gujrat lighthjouse data
+      - name: gj_vt_school_sectors
+        identifier: VTSchoolSectors
+        description:  gujrat lighthjouse data
+      - name: gj_vcs
+        identifier: VocationalCoordinators
+        description:  gujrat lighthjouse data
+      - name: gj_vts
+        identifier: VocationalTrainers
+        description:  gujrat lighthjouse data
+      - name: gj_vtps
+        identifier: VocationalTrainingProviders
+        description:  gujrat lighthjouse data
