@@ -90,7 +90,7 @@ sources:
         identifier: VocationalTrainingProviders
         description: employee data new
       - name: vt_class_students
-        identifier: vtclassstudents
+        identifier: VTClassStudents
         description: employee data new
       - name: vtp_sector_job_roles
         identifier: vtpsectorjobroles
@@ -99,13 +99,13 @@ sources:
         identifier: vtpsectors
         description: employee data new
       - name: vt_school_classes
-        identifier: vtschoolclasses
+        identifier: VTSchoolClasses
         description: employee data new
       - name: vt_school_sector_job_roles
         identifier: vtschoolsectorjobroles
         description: employee data new
       - name: vt_school_sectors
-        identifier: vtschoolsectors
+        identifier: VTSchoolSectors
         description: employee data new
       - name: coordinator_trainers
         identifier: CoordinatorTrainers

@@ -48,19 +48,19 @@ WITH SchoolData AS
         JR."JobRoleName" AS "lahi_job_role",
         SUM(CASE WHEN CAST(C."Gender" AS INTEGER) = 207 THEN 1 ELSE 0 END) AS "total_boys",
         SUM(CASE WHEN CAST(C."Gender" AS INTEGER) = 208 THEN 1 ELSE 0 END) AS "total_girls"
-    FROM {{source('lighthouseMH','schools')}} as S
-    LEFT JOIN {{source('lighthouseMH','states')}} AS ST ON S."StateCode" = ST."StateCode"
-    LEFT JOIN {{source('lighthouseMH','student_class_mapping')}} AS SC ON S."SchoolId" = SC."SchoolId"
-    LEFT JOIN {{source('lighthouseMH','student_classes')}} AS C ON SC."StudentId" = C."StudentId"
-    LEFT JOIN {{source('lighthouseMH','school_classes')}} AS class ON SC."ClassId" = class."ClassId"
-    LEFT JOIN {{source('lighthouseMH','academic_years')}} AS AY ON SC."AcademicYearId" = AY."AcademicYearId"
-    LEFT JOIN {{source('lighthouseMH','vt_class_students')}} AS VCS ON SC."StudentId" = VCS."StudentId"
-    LEFT JOIN {{source('lighthouseMH','vt_school_sectors')}} AS VSS ON S."SchoolId" = VSS."SchoolId"
-    LEFT JOIN {{source('lighthouseMH','vocational_trainers')}} AS VT ON VSS."VTId" = VT."VTId"
-	  LEFT JOIN {{source('lighthouseMH','student_class_details')}} AS SCD ON SC."StudentId" = SCD."StudentId"
-    LEFT JOIN {{source('lighthouseMH','sectors')}} AS SE ON SCD."SectorId" = SE."SectorId"
-    LEFT JOIN {{source('lighthouseMH','job_roles')}} AS JR ON SCD."JobRoleId" = JR."JobRoleId"
-    LEFT JOIN {{source('lighthouseMH','tool_equipments')}} AS TE ON S."SchoolId" = TE."SchoolId"
+    FROM {{source('source_lahi_gj','schools')}} as S
+    LEFT JOIN {{source('source_lahi_gj','states')}} AS ST ON S."StateCode" = ST."StateCode"
+    LEFT JOIN {{source('source_lahi_gj','student_class_mapping')}} AS SC ON S."SchoolId" = SC."SchoolId"
+    LEFT JOIN {{source('source_lahi_gj','student_classes')}} AS C ON SC."StudentId" = C."StudentId"
+    LEFT JOIN {{source('source_lahi_gj','school_classes')}} AS class ON SC."ClassId" = class."ClassId"
+    LEFT JOIN {{source('source_lahi_gj','academic_years')}} AS AY ON SC."AcademicYearId" = AY."AcademicYearId"
+    LEFT JOIN {{source('source_lahi_gj','vt_class_students')}} AS VCS ON SC."StudentId" = VCS."StudentId"
+    LEFT JOIN {{source('source_lahi_gj','vt_school_sectors')}} AS VSS ON S."SchoolId" = VSS."SchoolId"
+    LEFT JOIN {{source('source_lahi_gj','vocational_trainers')}} AS VT ON VSS."VTId" = VT."VTId"
+	LEFT JOIN {{source('source_lahi_gj','student_class_details')}} AS SCD ON SC."StudentId" = SCD."StudentId"
+    LEFT JOIN {{source('source_lahi_gj','sectors')}} AS SE ON SCD."SectorId" = SE."SectorId"
+    LEFT JOIN {{source('source_lahi_gj','job_roles')}} AS JR ON SCD."JobRoleId" = JR."JobRoleId"
+    LEFT JOIN {{source('source_lahi_gj','tool_equipments')}} AS TE ON S."SchoolId" = TE."SchoolId"
     GROUP BY SC."StudentId", ST."StateName", S."IsActive", SE."SectorName",
             S."UDISE", AY."YearName", VT."FullName", VT."IsActive", JR."JobRoleName", 
             class."ClassCode", SC."IsActive", S."IsImplemented", VT."NatureOfAppointment", 

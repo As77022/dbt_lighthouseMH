@@ -5,10 +5,10 @@ sources:
     database: LAHIDATA
     schema: a_stg_lh_gj
     tables:
-      - name: gj_academic_years
+      - name: academic_years
         identifier: AcademicYears
         description: gujrat lighthjouse data 
-      - name: gj_blocks
+      - name: blocks
         identifier: Blocks
         description: gujrat lighthjouse data
       - name: school_classes
@@ -17,51 +17,57 @@ sources:
       - name: districts
         identifier: districts
         description:  gujrat lighthjouse data
-      - name: gj_accountwork_locations
+      - name: accountwork_locations
         identifier: AccountWorkLocations
         description:  gujrat lighthjouse data
-      - name: gj_accounts
+      - name: accounts
         identifier: Accounts
         description:  gujrat lighthjouse data
-      - name: gj_datavalues
+      - name: datavalues
         identifier: DataValues
         description:  gujrat lighthjouse data
-      - name: gj_exitsurvey_details
+      - name: exitsurvey_details
         identifier: ExitSurveyDetails
         description:  gujrat lighthjouse data
-      - name: gj_jobroles
-        identifier: JObRoles
+      - name: job_roles
+        identifier: JobRoles
         description:  gujrat lighthjouse data      
-      - name: gj_schools
+      - name: schools
         identifier: Schools
         description:  gujrat lighthjouse data
-      - name: gj_sectors
+      - name: sectors
         identifier: Sectors
         description:  gujrat lighthjouse data
-      - name: gj_states
+      - name: states
         identifier: States
         description:  gujrat lighthjouse data
-      - name: gj_Student_class_details
+      - name: student_class_details
         identifier: StudentClassDetails
         description:  gujrat lighthjouse data
-      - name: gj_Student_class_mapping
+      - name: student_class_mapping
         identifier: StudentClassMapping
         description:  gujrat lighthjouse data
       - name: student_classes
         identifier: StudentClasses
         description:  gujrat lighthjouse data
-      - name: gj_vc_trainers_map
+      - name: vc_trainers_map
         identifier: VCTrainersMap
         description:  gujrat lighthjouse data
-      - name: gj_vt_school_sectors
+      - name: vt_class_students
+        identifier: VTClassStudents
+        description: gujrat lighthjouse data
+      - name: vt_school_sectors
         identifier: VTSchoolSectors
         description:  gujrat lighthjouse data
-      - name: gj_vcs
+      - name: vcs
         identifier: VocationalCoordinators
         description:  gujrat lighthjouse data
-      - name: gj_vts
+      - name: vocational_trainers
         identifier: VocationalTrainers
         description:  gujrat lighthjouse data
-      - name: gj_vtps
+      - name: vtps
         identifier: VocationalTrainingProviders
         description:  gujrat lighthjouse data
+      - name: tool_equipments
+        identifier: ToolEquipments
+        description: gujrat lighthjouse data
