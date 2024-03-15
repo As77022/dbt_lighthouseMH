@@ -5,79 +5,68 @@
   ) 
 }}
 
-WITH SchoolData AS (
+WITH SchoolData AS 
+(
     SELECT
-        SC.studentid AS student_id,
-        SC.isactive AS student_status,
-        ST.statename AS state,
+        SC."StudentId" AS student_id,
+		SC."IsActive" as student_status,
+        ST."StateName" AS State,
         CASE
-          WHEN S.isimplemented = 'true' THEN 'Started'
-          WHEN S.isimplemented = 'false' THEN 'Not Started'
+			WHEN S."IsImplemented" = 'true' THEN 'Started'
+			WHEN S."IsImplemented" = 'false' THEN 'Not Started'
           ELSE NULL
         END AS school_status,
-        SE.sectorname AS state_sector,
+		SE."SectorName" AS State_sector,
         CASE
-          WHEN S.schooltypeid = '2' THEN 'Non-Composite (9-10)'
-          WHEN S.schooltypeid = '187' THEN 'Composite (9-12)'
-          WHEN S.schooltypeid = '1' THEN 'Composite (9-12)'
-          WHEN S.schooltypeid = '188' THEN 'Non-Composite (9-10)'
-          WHEN S.schooltypeid = '191' THEN 'Non-Composite (9-10)'
-          WHEN S.schooltypeid = '189' THEN 'Composite (9-12)'
-          ELSE S.schooltypeid
+          WHEN S."SchoolTypeId" = '2' THEN 'Non-Composite (9-10)'
+			WHEN S."SchoolTypeId" = '187' THEN 'Composite (9-12)'
+			WHEN S."SchoolTypeId" = '1' THEN 'Composite (9-12)'
+			WHEN S."SchoolTypeId" = '188' THEN 'Non-Composite (9-10)'
+			WHEN S."SchoolTypeId" = '191' THEN 'Non-Composite (9-10)'
+			WHEN S."SchoolTypeId" = '189' THEN 'Composite (9-12)'
+          ELSE S."SchoolTypeId"
         END AS school_category,
         CASE
-          WHEN S.schoolmanagementid = '182' THEN 'Government'
-          WHEN S.schoolmanagementid = '194' THEN 'Government'
-          WHEN S.schoolmanagementid = '183' THEN 'Government'
-          WHEN S.schoolmanagementid = '185' THEN 'Government'
-          WHEN S.schoolmanagementid = '404' THEN 'Government'
-          WHEN S.schoolmanagementid = '192' THEN 'Government'
-          WHEN S.schoolmanagementid = '198' THEN 'Government'
-          ELSE S.schoolmanagementid
+          WHEN S."SchoolManagementId" = '182' THEN 'Government'
+			WHEN S."SchoolManagementId" = '194' THEN 'Government'
+          WHEN S."SchoolManagementId" = '183' THEN 'Government'
+          WHEN S."SchoolManagementId" = '185' THEN 'Government'
+          WHEN S."SchoolManagementId" = '404' THEN 'Government'
+          WHEN S."SchoolManagementId" = '198' THEN 'Government'
+          ELSE S."SchoolManagementId"
         END AS school_type,
-        CASE
-          WHEN TE.tereceivestatus::text = 'Yes' THEN 'Available'
-          WHEN TE.tereceivestatus::text = 'No' THEN 'Not Available'
-          ELSE TE.tereceivestatus
-        END AS lab,
-        S.udise AS school_id_udi,
-        AY.yearname AS yearname,
-        VT.fullname AS vt_name,
+        S."UDISE" AS school_id_udi,
+        AY."YearName" AS yearname,
+        VT."FullName"  AS vt_name,
         CASE 
-            WHEN VT.isactive::text = 'true' THEN 'Available'
-            WHEN VT.isactive::text = 'false' THEN 'Not Available'
+            WHEN VT."IsActive"::text = 'true' THEN 'Available'
+            WHEN VT."IsActive"::text = 'false' THEN 'Not Available'
             ELSE NULL
         END AS vt_status,
-        VT.isactive as vt_is_active,
-        VTP.vtpname AS vtp,
-        VTP.isactive AS vtp_status,
-        class.classcode AS class,
-        JR.jobrolename AS lahi_job_role,
-        SUM(CASE WHEN CAST(C.gender AS INTEGER) = 207 THEN 1 ELSE 0 END) AS total_boys,
-        SUM(CASE WHEN CAST(C.gender AS INTEGER) = 208 THEN 1 ELSE 0 END) AS total_girls
-    FROM {{ source('lighthouseMH','schools') }} as S
-    LEFT JOIN {{ source('lighthouseMH','states') }} ST ON S.statecode = ST.statecode
-    LEFT JOIN {{ source('lighthouseMH', 'student_class_mapping') }} SC ON S.schoolid = SC.schoolid
-    LEFT JOIN {{ source('lighthouseMH','student_classes') }} C ON SC.studentid = C.studentid
-    LEFT JOIN {{ source('lighthouseMH','sections') }} sections ON SC.sectionid = sections.sectionid
-    LEFT JOIN {{ source('lighthouseMH','school_classes') }} class ON SC.classid = class.classid
-    LEFT JOIN {{ source('lighthouseMH','academic_years') }} AY ON SC.academicyearid = AY.academicyearid
-    LEFT JOIN {{ source('lighthouseMH','vt_class_students') }} VCS ON SC.studentid = VCS.studentid
-    LEFT JOIN {{ source('lighthouseMH','vt_school_sectors') }} VSS ON S.schoolid = VSS.schoolid
-    LEFT JOIN {{ source('lighthouseMH','vocational_trainers') }} VT ON VSS.vtid = VT.vtid
-    LEFT JOIN {{ source('lighthouseMH','schools_by_vtp_sector_info') }} SVTPS ON S.schoolid = SVTPS.implementedschoolid
-    -- LEFT JOIN {{ ref('schools_by_vtp_sector_info') }} SVTPS ON S.schoolid = SVTPS.approvedschoolid
-    LEFT JOIN {{ source('lighthouseMH','vocational_training_providers') }} VTP ON SVTPS.vtpid = VTP.vtpid
-    LEFT JOIN {{ source('lighthouseMH','student_class_details') }} SCD ON SC.studentid = SCD.studentid
-    LEFT JOIN {{ source('lighthouseMH','sectors') }} SE ON SCD.sectorid = SE.sectorid
-    LEFT JOIN {{ source('lighthouseMH','job_roles') }} JR ON SCD.jobroleid = JR.jobroleid
-    LEFT JOIN {{ source('lighthouseMH','tool_equipments') }} TE ON S.schoolid = TE.schoolid
-    GROUP BY SC.studentid, ST.statename, S.isactive, SE.sectorname, TE.tereceivestatus, 
-            S.udise, AY.yearname, VT.fullname, VT.isactive, JR.jobrolename, VTP.vtpname, 
-            class.classcode, VTP.isactive, SC.isactive, S.isimplemented, VT.natureofappointment, 
-            S.schooltypeid, S.schoolmanagementid
-)
-
+        VT."IsActive" as vt_is_active,
+        class."ClassCode" AS class,
+        JR."JobRoleName" AS lahi_job_role,
+        SUM(CASE WHEN CAST(C."Gender" AS INTEGER) = 207 THEN 1 ELSE 0 END) AS total_boys,
+        SUM(CASE WHEN CAST(C."Gender" AS INTEGER) = 208 THEN 1 ELSE 0 END) AS total_girls
+    FROM {{source('lighthouseMH','schools')}} as S
+    LEFT JOIN {{source('lighthouseMH','states')}} AS ST ON S."StateCode" = ST."StateCode"
+    LEFT JOIN {{source('lighthouseMH','student_class_mapping')}} AS SC ON S."SchoolId" = SC."SchoolId"
+    LEFT JOIN {{source('lighthouseMH','student_classes')}} AS C ON SC."StudentId" = C."StudentId"
+    --LEFT JOIN a_stg_lh_mh."Sections" AS sections ON SC."SectionId" = sections."SectionId"
+    LEFT JOIN {{source('lighthouseMH','school_classes')}} AS class ON SC."ClassId" = class."ClassId"
+    LEFT JOIN {{source('lighthouseMH','academic_years')}} AS AY ON SC."AcademicYearId" = AY."AcademicYearId"
+    LEFT JOIN {{source('lighthouseMH','vt_class_students')}} AS VCS ON SC."StudentId" = VCS."StudentId"
+    LEFT JOIN {{source('lighthouseMH','vt_school_sectors')}} AS VSS ON S."SchoolId" = VSS."SchoolId"
+    LEFT JOIN {{source('lighthouseMH','vocational_trainers')}} AS VT ON VSS."VTId" = VT."VTId"
+	LEFT JOIN {{source('lighthouseMH','student_class_details')}} AS SCD ON SC."StudentId" = SCD."StudentId"
+    LEFT JOIN {{source('lighthouseMH','sectors')}} AS SE ON SCD."SectorId" = SE."SectorId"
+    LEFT JOIN {{source('lighthouseMH','job_roles')}} AS JR ON SCD."JobRoleId" = JR."JobRoleId"
+    LEFT JOIN {{source('lighthouseMH','tool_equipments')}} AS TE ON S."SchoolId" = TE."SchoolId"
+    GROUP BY SC."StudentId", ST."StateName", S."IsActive", SE."SectorName",
+            S."UDISE", AY."YearName", VT."FullName", VT."IsActive", JR."JobRoleName", 
+            class."ClassCode", SC."IsActive", S."IsImplemented", VT."NatureOfAppointment", 
+            S."SchoolTypeId", S."SchoolManagementId"
+ )
 SELECT
     state,
     school_status::TEXT,
@@ -85,10 +74,8 @@ SELECT
     class,
     school_category,
     school_type,
-    lab,
     school_id_udi,
     yearname as academic_year,
-    vtp,
     total_boys,
     total_girls,
     total_boys + total_girls AS grand_total,
