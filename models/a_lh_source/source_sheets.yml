@@ -1,0 +1,108 @@
+version: 2
+
+sources:
+  - name: gsheet_data
+    database: LAHIDATA
+    schema: a_stg_sheets 
+    tables:
+      - name: andhra_pradesh_database
+        identifier: AP_School_DB_22_23
+        description: andhra pradesh google sheet
+      - name: andhra_pradesh_23_24_database
+        identifier: Andhra_PMU_Database_23_24
+        description: employee data new
+      - name: assam_database
+        identifier: Assam_PMU_Database_22_23
+        description: assam_google sheet
+      - name: chattisgarh_database
+        identifier: CG_DB_22_23
+        description: chattisgarh google sheet
+      - name: delhi_database
+        identifier: DL_DB_22_23
+        description: delhi google sheet
+      - name: delhi_23_24_database
+        identifier: Delhi_PMU_Database_23_24
+        description: employee data new
+      - name: gujarat_database
+        identifier: GJ_DB_22_23
+        description: gujarat google sheet
+      - name: gujarat_23_24_database
+        identifier: Gujarat_PMU_Database_23_24
+        description: employee data new
+      - name: hp_pmu_db_22_23
+        identifire: HP_PMU_Database_23_24
+        description:  hp pmu data 23-24
+      - name: himachal_pradesh_database
+        identifier: HP_School_DB_22_23
+        description: himachal pradesh google sheet
+      - name: jharkhand_database
+        identifier: JH_DB_22_23
+        description: jharkhand google sheet
+      - name: jharkhand_23_24_database
+        identifier: Jharkhand_PMU_Database_23_24
+        description: employee data new
+      - name: karnataka_database
+        identifier: KA_School_DB_22_23
+        description: karnataka google sheet
+      - name: karnataka_23_24_database
+        identifier: Karnataka_State_DB_23_24
+        description: employee data new
+      - name: ladakh_database
+        identifier: LD_DB_22_23
+        description: ladakh database
+      - name: ladakh_23_24_database
+        identifier: Ladakh_State_DB_23_24
+        description: employee data new
+      - name: maharashtra_database
+        identifier: MH_DB_22_23
+        description: maharashtra google sheet
+      - name: maharashtra_23_24_database
+        identifier: MH_PMU_Database_23_24
+        description: employee data new
+      - name: nagaland_database
+        identifier: NG_DB_22_23
+        description: nagaland database
+      - name: nagaland_23_24_database
+        identifier: Nagaland_State_DB_23_24
+        description: employee data new
+      - name: odisha_database
+        identifier: OD_DB_22_23
+        description: odisha database
+      - name: odisha_23_24_database
+        identifier: Odisha_State_DB_23_24
+        description: employee data new
+      - name: punjab_database
+        identifier: PB_DB_22_23
+        description: punjab database
+      - name: punjab_23_24_database
+        identifier: PB_PMU_Database_23_24
+        description: employee data new
+      - name: rajasthan_database
+        identifier: RJ_DB_22_23
+        description: rajasthan database
+      - name: rajasthan_23_24_database
+        identifier: RJ_State_Db_23_24
+        description: employee data new
+      - name: telangana_23_24_database
+        identifier: TL_State_DB_23_24
+        description: employee data new
+      - name: tamil_nadu_database
+        identifier: TN_DB_22_23
+        description: tamil nadu database
+      - name: tamil_nadu_23_24_database
+        identifier: TN_State_DB_23_24
+        description: employee data new
+      - name: uttarakhand_database
+        identifier: UK_PMU_Database_22_23
+        description: uttarakhand database
+      - name: uttarakhand_23_24_database
+        identifier: UK_State_DB_23_24
+        description: employee data new
+      - name: pmu_monthly_report_database
+        identifier: pmu_monthly_report
+        description: pmu monthly report
+      - name: pmu_field_visit_database
+        identifier: field_visit_form_lend_a_hand_india
+        description: pmu field visit
+      
+      
