@@ -8,17 +8,14 @@
             {% if node.fqn[1:-1]|length == 0 %}
                  {{target.schema}}_{{ default_schema }}    
             {% else %}
-                {% set prefix = node.fqn[1:-1]|join('_') %}
-                 {{target.schema}}_{{ prefix | trim }}
+                {{target.schema}}_{{ node.fqn[1:-1] }}
             {% endif %}
-
 
        {% else %} 
             {% if node.fqn[1:-1]|length == 0 %}
                 {{ default_schema }}    
             {% else %}
-                {% set prefix = node.fqn[1:-1]|join('_') %}
-                {{ prefix | trim }}
+                {{ node.fqn[1:-1] }}
             {% endif %}
          {% endif %}
     {%- else -%}
