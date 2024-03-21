@@ -1,6 +1,5 @@
 {{ config(
-  materialized='table',
-  schema = 'stg_agg'
+  materialized='table'
 ) }}
 
 with my_cte as (

@@ -1,7 +1,6 @@
 {{ 
   config(
-    materialized='table',
-    schema='stg_agg'
+    materialized='table'
   ) 
 }}
 

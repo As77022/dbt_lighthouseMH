@@ -1,5 +1,4 @@
-{{config(materialized = 'table',
-            schema = 'stg_agg')}}
+{{config(materialized = 'table')}}
 
 
 WITH mycte AS (
